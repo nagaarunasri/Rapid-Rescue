@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Dashboard | Rapid Rescue AI</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="gradient-bg">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar navbar-expand-lg glass-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-logo text-white" href="index.html">
+        <i class="fa-solid fa-truck-medical"></i>Rapid Rescue AI
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html"><i class="fa-solid fa-house me-1"></i>Home</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="dashboard.html"><i class="fa-solid fa-chart-line me-1"></i>Live Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="route-guide.html"><i class="fa-solid fa-route me-1"></i>Route Guide</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="alerts.html"><i class="fa-solid fa-bell me-1"></i>Alerts</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="analytics.html"><i class="fa-solid fa-chart-pie me-1"></i>Analytics</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="control-center.html"><i class="fa-solid fa-satellite-dish me-1"></i>Control Center</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="navigation.html"><i class="fa-solid fa-diagram-project me-1"></i>Flow</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom logoutBtn" href="#"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container section-pad">
+
+    <!-- Title -->
+    <div class="d-flex flex-wrap align-items-center justify-content-between mb-4" data-aos="fade-up">
+      <h2 class="fw-bold mb-0"><span class="pulse-dot"></span>Live Traffic Monitoring Dashboard</h2>
+      <span class="text-light small"><i class="fa-solid fa-arrows-rotate me-1"></i>Auto-refreshing every 3 seconds</span>
+    </div>
+
+    <!-- Traffic Status Cards -->
+    <div class="row g-4 mb-5" id="trafficGrid">
+      <!-- Cards rendered dynamically by app.js -->
+    </div>
+
+    <!-- Classification Legend -->
+    <div class="glass-card p-4 mb-5" data-aos="fade-up">
+      <h5 class="fw-bold mb-3"><i class="fa-solid fa-circle-info me-2"></i>Traffic Classification Rules</h5>
+      <div class="row g-3 text-center">
+        <div class="col-md-4">
+          <span class="traffic-badge badge-green">Clear</span>
+          <p class="mt-2 mb-0">0 – 10 vehicles</p>
+        </div>
+        <div class="col-md-4">
+          <span class="traffic-badge badge-yellow">Moderate</span>
+          <p class="mt-2 mb-0">11 – 20 vehicles</p>
+        </div>
+        <div class="col-md-4">
+          <span class="traffic-badge badge-red">Heavy</span>
+          <p class="mt-2 mb-0">21+ vehicles</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backend Flow Visualization -->
+    <div class="glass-card p-4 p-md-5" data-aos="fade-up">
+      <h5 class="fw-bold mb-4"><i class="fa-solid fa-server me-2"></i>Backend Data Pipeline</h5>
+      <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between text-center gap-3">
+        <div class="flow-step glass-card flex-fill">
+          <i class="fa-solid fa-satellite-dish fs-2 mb-2 text-info"></i>
+          <h6 class="fw-bold mb-1">IoT Traffic Sensors</h6>
+          <small class="text-light">Detect vehicles on Roads A–D</small>
+        </div>
+        <i class="fa-solid fa-arrow-right flow-arrow d-none d-lg-block"></i>
+        <i class="fa-solid fa-arrow-down flow-arrow d-lg-none"></i>
+        <div class="flow-step glass-card flex-fill">
+          <i class="fa-solid fa-microchip fs-2 mb-2 text-warning"></i>
+          <h6 class="fw-bold mb-1">Arduino Controller</h6>
+          <small class="text-light">Reads sensor values every few seconds</small>
+        </div>
+        <i class="fa-solid fa-arrow-right flow-arrow d-none d-lg-block"></i>
+        <i class="fa-solid fa-arrow-down flow-arrow d-lg-none"></i>
+        <div class="flow-step glass-card flex-fill">
+          <i class="fa-solid fa-cloud fs-2 mb-2" style="color:#FFA000;"></i>
+          <h6 class="fw-bold mb-1">Firebase Realtime DB</h6>
+          <small class="text-light">Stores live vehicle counts &amp; density</small>
+        </div>
+        <i class="fa-solid fa-arrow-right flow-arrow d-none d-lg-block"></i>
+        <i class="fa-solid fa-arrow-down flow-arrow d-lg-none"></i>
+        <div class="flow-step glass-card flex-fill">
+          <i class="fa-solid fa-gauge-high fs-2 mb-2 text-success"></i>
+          <h6 class="fw-bold mb-1">This Dashboard</h6>
+          <small class="text-light">Listens for changes &amp; updates UI instantly</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="text-center text-light">
+    <div class="container">
+      <h6 class="fw-bold mb-2"><i class="fa-solid fa-truck-medical me-2"></i>Rapid Rescue AI</h6>
+      <p class="mb-0 small">Smart Technology • Real-Time Data • Faster Response • Saving Lives</p>
+      <p class="mb-0 small mt-2">&copy; 2026 Rapid Rescue AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>protectPage();</script>
+</body>
+</html>

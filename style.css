@@ -1,0 +1,441 @@
+/* ===========================================================
+   RAPID RESCUE AI - GLOBAL STYLESHEET
+   Glassmorphism, gradients, animations, responsive design
+   =========================================================== */
+
+:root {
+  --primary-blue: #0D6EFD;
+  --medical-red: #DC3545;
+  --success-green: #28A745;
+  --warning-yellow: #FFC107;
+  --white: #FFFFFF;
+  --dark-navy: #001F54;
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --shadow-soft: 0 8px 32px rgba(0, 31, 84, 0.15);
+  --transition: all 0.35s ease;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #001F54 0%, #0D6EFD 100%);
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===================== UTILITIES ===================== */
+.gradient-bg {
+  background: linear-gradient(135deg, #001F54 0%, #0D6EFD 60%, #1c8aff 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #0D6EFD, #28A745);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===================== GLASSMORPHISM ===================== */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 31, 84, 0.35);
+}
+
+.glass-navbar {
+  background: rgba(0, 31, 84, 0.55);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+}
+
+/* ===================== BUTTONS ===================== */
+.btn-primary-glow {
+  background: linear-gradient(90deg, var(--primary-blue), #4dabf7);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 12px 32px;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+}
+.btn-primary-glow:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.6);
+  color: #fff;
+}
+
+.btn-danger-glow {
+  background: linear-gradient(90deg, var(--medical-red), #ff6b6b);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 12px 32px;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+.btn-danger-glow:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.6);
+  color: #fff;
+}
+
+.btn-outline-glow {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+  border-radius: 50px;
+  padding: 10px 30px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.btn-outline-glow:hover {
+  background: #fff;
+  color: var(--dark-navy);
+  transform: translateY(-3px);
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar-brand-logo {
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+.navbar-brand-logo i {
+  color: var(--medical-red);
+  margin-right: 8px;
+  animation: heartbeat 1.4s infinite;
+}
+
+.nav-link-custom {
+  color: #e8f0ff !important;
+  font-weight: 500;
+  border-radius: 30px;
+  padding: 8px 18px !important;
+  margin: 0 2px;
+  transition: var(--transition);
+}
+.nav-link-custom:hover, .nav-link-custom.active {
+  background: rgba(255,255,255,0.18);
+  color: #fff !important;
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.3); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.2); }
+  60% { transform: scale(1); }
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(40, 167, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+.pulse-dot {
+  width: 14px; height: 14px;
+  background: var(--success-green);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 1.6s infinite;
+  margin-right: 8px;
+}
+.pulse-dot.red { background: var(--medical-red); animation-name: pulse-dot-red; }
+@keyframes pulse-dot-red {
+  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(220, 53, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+.float-anim { animation: float 4s ease-in-out infinite; }
+
+@keyframes drive {
+  0% { transform: translateX(-30px); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(-30px); }
+}
+.drive-anim { animation: drive 2.4s ease-in-out infinite; display:inline-block; }
+
+@keyframes particleMove {
+  0% { transform: translateY(0) translateX(0); opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-120vh) translateX(40px); opacity: 0; }
+}
+.particle {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  animation: particleMove linear infinite;
+}
+
+@keyframes arrowFlow {
+  0% { opacity: 0.2; transform: translateX(-6px); }
+  50% { opacity: 1; transform: translateX(6px); }
+  100% { opacity: 0.2; transform: translateX(-6px); }
+}
+.flow-arrow { animation: arrowFlow 1.8s ease-in-out infinite; color: var(--success-green); }
+
+/* ===================== LOGIN / REGISTER PAGE ===================== */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.auth-illustration {
+  background: linear-gradient(135deg, rgba(13,110,253,0.6), rgba(0,31,84,0.9));
+  border-radius: 24px 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.auth-form-side {
+  background: rgba(255,255,255,0.08);
+  border-radius: 0 24px 24px 0;
+  padding: 50px;
+  backdrop-filter: blur(16px);
+}
+@media (max-width: 767px) {
+  .auth-illustration { border-radius: 24px 24px 0 0; }
+  .auth-form-side { border-radius: 0 0 24px 24px; }
+}
+
+.form-control-glass {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.form-control-glass:focus {
+  background: rgba(255,255,255,0.18);
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(13,110,253,0.35);
+  color: #fff;
+}
+.form-control-glass::placeholder { color: rgba(255,255,255,0.6); }
+
+/* ===================== HERO SECTION ===================== */
+.hero-section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(220,53,69,0.25), transparent 70%);
+  top: -100px; right: -150px;
+  border-radius: 50%;
+}
+
+/* ===================== STAT CARDS ===================== */
+.stat-card {
+  text-align: center;
+  padding: 30px 15px;
+}
+.stat-number {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--white);
+}
+.stat-label {
+  color: #cfe2ff;
+  font-weight: 500;
+}
+
+/* ===================== FEATURE CARDS ===================== */
+.feature-icon {
+  width: 70px; height: 70px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--primary-blue), #4dabf7);
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(13,110,253,0.4);
+}
+
+/* ===================== TRAFFIC CARDS ===================== */
+.traffic-card {
+  border-radius: 18px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.traffic-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 30px;
+}
+.badge-green { background: var(--success-green); color: #fff; }
+.badge-yellow { background: var(--warning-yellow); color: #1a1a1a; }
+.badge-red { background: var(--medical-red); color: #fff; }
+
+.traffic-card.status-green { border-left: 6px solid var(--success-green); }
+.traffic-card.status-yellow { border-left: 6px solid var(--warning-yellow); }
+.traffic-card.status-red { border-left: 6px solid var(--medical-red); }
+
+.car-icon {
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+/* ===================== ROUTE MAP ===================== */
+.route-map-box {
+  border-radius: 18px;
+  padding: 30px;
+  background: rgba(255,255,255,0.06);
+  border: 1px dashed rgba(255,255,255,0.3);
+  position: relative;
+  min-height: 220px;
+}
+.route-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+}
+.route-line {
+  flex: 1;
+  height: 4px;
+  background: linear-gradient(90deg, var(--success-green), var(--primary-blue));
+  border-radius: 4px;
+  position: relative;
+  margin: 0 10px;
+  overflow: hidden;
+}
+.route-line::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -40%;
+  width: 40%; height: 100%;
+  background: rgba(255,255,255,0.6);
+  animation: routeFlow 1.6s linear infinite;
+}
+@keyframes routeFlow {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+/* ===================== ALERTS ===================== */
+.alert-card {
+  border-radius: 14px;
+  padding: 16px 20px;
+  border-left: 5px solid var(--medical-red);
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+.alert-card:hover { transform: translateX(6px); }
+.alert-card.type-cleared { border-left-color: var(--success-green); }
+.alert-card.type-moderate { border-left-color: var(--warning-yellow); }
+.alert-card.type-route { border-left-color: var(--primary-blue); }
+
+/* ===================== EMERGENCY CONTROL CENTER ===================== */
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.ambulance-status-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+.status-available { background: var(--success-green); }
+.status-busy { background: var(--warning-yellow); }
+.status-emergency { background: var(--medical-red); animation: pulse-dot-red 1.4s infinite; }
+
+.map-placeholder {
+  border-radius: 18px;
+  min-height: 320px;
+  background:
+    linear-gradient(rgba(0,31,84,0.6), rgba(0,31,84,0.6)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 10px, transparent 10px 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ===================== TESTIMONIALS ===================== */
+.testimonial-card {
+  padding: 28px;
+  border-radius: 18px;
+}
+.testimonial-avatar {
+  width: 55px; height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-blue), var(--medical-red));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* ===================== NAV FLOW (PAGE 8) ===================== */
+.flow-step {
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.flow-connector {
+  font-size: 1.8rem;
+  color: var(--success-green);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: rgba(0,31,84,0.8);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 30px 0;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 575px) {
+  .stat-number { font-size: 2rem; }
+  .hero-section { text-align: center; }
+}
+
+/* Section spacing */
+.section-pad { padding: 70px 0; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: var(--primary-blue); border-radius: 10px; }
